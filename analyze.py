@@ -1,6 +1,6 @@
 import csv
 
-filmweb_database_path = r''
+filmweb_database_path = r'C://Users/filip/Downloads/filmwebdatabase/movies.csv'
 movie_data_path = 'movie_data_cleaned.csv'
 
 allratings = []
@@ -39,6 +39,7 @@ fig, ax1 = plt.subplots()
 ax2 = ax1.twinx()
 
 import numpy as np
+
 avg = np.mean(allratings)
 ax1.hist(allratings, bins = 20, color='skyblue', alpha=0.5, label='Rozkład ocen na Filmweb')
 ax1.axvline(avg, color='skyblue', linestyle='--', label=f'Średnia ocena na Filmweb = {avg:.2f}')
@@ -46,7 +47,8 @@ ax1.set_ylabel('Ilość ocen na Filmweb')
 ax2.set_ylabel('Cena oferty')
 ax1.set_xlabel('Ocena filmu')
 
-ax2.axvline(np.mean(ratings), color='red', linestyle='--', label='Średnie oceny filmów z OLX')
+avg_olx = np.mean(ratings)
+ax2.axvline(avg_olx, color='red', linestyle='--', label=f'Średnie oceny filmów z OLX = {avg_olx:.2f}')
 
 ax2.scatter(ratings, prices, color='red', label = 'Oferty wystawione na OLX')
 ax1.legend(loc='upper left')
